@@ -4,6 +4,7 @@
 import HelloWorld from "./components/HelloWorld.vue";
 const a = 1;
 const b = 2;
+console.log(1);
 </script>
 
 <template>
