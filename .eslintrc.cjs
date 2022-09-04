@@ -1,9 +1,28 @@
 module.exports = {
-  root:true,
+  env: {
+    browser: true,
+    es2021: true,
+    node: true
+  },
   extends: [
-    "@antfu"
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:vue/vue3-recommended",
   ],
-  rules:{
+  overrides: [
+  ],
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    parser: "@typescript-eslint/parser",
+  },
+  plugins: [
+    'vue',
+    "@typescript-eslint"
+  ],
+  rules: {
+    "@typescript-eslint/ban-types":"off",
+    "@typescript-eslint/no-explicit-any":"off",
     "@typescript-eslint/no-unused-vars":"error"
   }
 }

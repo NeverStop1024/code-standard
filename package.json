@@ -14,9 +14,7 @@
     "vue": "^3.2.37"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.26.3",
     "@commitlint/cli": "^17.1.2",
-    "@element-plus/eslint-config": "^0.0.20220903",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@vitejs/plugin-vue": "^3.0.3",
     "commitizen": "^4.2.5",
