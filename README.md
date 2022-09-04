@@ -31,7 +31,7 @@ module.exports = {
 
 生成的这个`standard-with-typescript`非常难用，一直报各种错误，可能比较严格，我们换成`plugin:@typescript-eslint/recommended`，顺便我们也把 vue 的也换成`recommended`
 
-```json
+```javascript
   extends: [
     //  'plugin:vue/vue3-essential',
     //  'standard-with-typescript'
@@ -49,7 +49,7 @@ module.exports = {
   ![img_1_zq55Jb](https://cdn.jsdelivr.net/gh/NeverStop1024/images-store@main/blog/img_1_zq55Jb.png)
 - 还报错，直接把这两个规则`off`取消
 
-```json
+```javascript
   rules: {
     "@typescript-eslint/ban-types":"off",
     "@typescript-eslint/no-explicit-any":"off"
@@ -58,7 +58,7 @@ module.exports = {
 
 - 执行`eslint src` 恢复正常，我们去`package.json`配置`scripts`，
 
-```json
+```javascript
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -76,7 +76,7 @@ module.exports = {
   ![img_y8olmU](https://cdn.jsdelivr.net/gh/NeverStop1024/images-store@main/blog/img_y8olmU.png)
   所以问题找到了，eslint 不能正常解析 vue 的原因，是因为 vue 的 parser 解析器被覆盖了，那我们将两个 extend 调换下顺序。
 
-```json
+```javascript
   extends: [
     "plugin:@typescript-eslint/recommended",
     "plugin:vue/vue3-recommended"
@@ -88,7 +88,7 @@ module.exports = {
   ![img_h8Zwr5](https://cdn.jsdelivr.net/gh/NeverStop1024/images-store@main/blog/img_h8Zwr5.png)
   因为我们 vue 项目用的是 ts，所以要手动指定`parserOptions.parser`，至于为什么，文章`工具->eslint`中有写到。
 
-```json
+```javascript
 parserOptions: {
   ecmaVersion: 'latest',
   sourceType: 'module',
@@ -103,7 +103,7 @@ parserOptions: {
 - `yarn add -D prettier eslint-config-prettier`安装
 - 创建`.prettierrc`配置,下面是 element-plus 配置
 
-```json
+```javascript
 {
   "semi": false,
   "singleQuote": true,
@@ -130,7 +130,7 @@ parserOptions: {
 - `yarn add -D lint-staged`
 - `package.json`增加配置
 
-```json
+```javascript
 "lint-staged": {
   "*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write"],
   "{!(package)*.json,*.code-snippets,.!(browserslist)*rc}": ["prettier --write--parser json"],
@@ -242,7 +242,7 @@ vite 创建的项目，`package.json`中指定了`"type": "module"`，说明 js 
 ![img_2_AVn6nt](https://cdn.jsdelivr.net/gh/NeverStop1024/images-store@main/blog/img_2_AVn6nt.png)
 由于我们改了`.cz-config.js`后缀，cz-customizable 找不到配置文件了，我们需要在`package.json`手动加入
 
-```json
+```javascript
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-customizable"
