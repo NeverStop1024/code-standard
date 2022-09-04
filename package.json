@@ -47,9 +47,6 @@
     ],
     "*.{scss,less,styl,html}": [
       "prettier --write"
-    ],
-    "*.md": [
-      "prettier --write"
     ]
   }
 }
